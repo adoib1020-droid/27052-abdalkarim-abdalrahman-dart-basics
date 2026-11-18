@@ -1,15 +1,15 @@
-# Done
-* Part A
-* Part B (B1)
-* Part C (C1, C2, C3, C4)
-* Part D (D1)
+Done
+- Part A (A1, A2)
+- Part B (B1, B2, B3)
+- Part C (C1, C2, C3, C4, C5)
+- Part D (D1, D2)
+- Part E (Find and fix)
+- Part F (MoMo Simulator + 6 extra unit tests)
+- Part G (Debugging log)
+- answers.pdf (final submission)
 
-# In progress
-* Part B (B2, B3)
-* Part C (C5)
-* Part D (D2)
-* Part F (MoMo Simulator)
+In progress
+- None
 
-# Stuck on
-* Part E (Find and fix)
-* Part G (Debugging log)
+Stuck on
+- None
