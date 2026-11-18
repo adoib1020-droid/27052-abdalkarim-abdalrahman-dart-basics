@@ -19,7 +19,7 @@ String formatRwf(int amount) {
   String result = '';
   int i = str.length - 1;
   int count = 0;
-
+  
   while (i >= 0) {
     result = str[i] + result;
     count++;
@@ -28,7 +28,7 @@ String formatRwf(int amount) {
     }
     i--;
   }
-
+  
   if (amount < 0) {
     result = '-' + result;
   }
@@ -39,7 +39,7 @@ bool isValidPin(String pin) {
   // by A.A.
   if (pin.length != 5) return false;
   if (pin == '12345') return false;
-
+  
   int i = 0;
   bool allSame = true;
   while (i < pin.length) {
@@ -48,9 +48,9 @@ bool isValidPin(String pin) {
     if (pin[i] != pin[0]) allSame = false;
     i++;
   }
-
-  if (allSame) return false;
-
+  
+  if (allSame) return false; 
+  
   return true;
 }
 
@@ -72,12 +72,8 @@ int sendMoney(int balance, int amount) {
 
 int buyAirtime(int balance, int amount) {
   // by A.A.
-  if (amount < 100 || amount > 50000) {
-    print('Failed: invalid amount (airtime must be 100 to 50,000 RWF)');
-    return balance;
-  }
-  if (amount > balance) {
-    print('Failed: insufficient balance');
+  if (amount < 100 || amount > 50000 || amount > balance) {
+    print('Failed: invalid or insufficient balance for airtime');
     return balance;
   }
   balance -= amount;
@@ -87,13 +83,13 @@ int buyAirtime(int balance, int amount) {
 
 void main() {
   // by A.A.
-  print('Reg no: $regNo | D = $d | T = $t');
+  print('Reg no: $regNo | D=$d | T=$t');
 
   print(isValidPin('12345'));
   print(isValidPin('77777'));
   print(isValidPin('4821'));
   print(isValidPin('48a21'));
-  print(isValidPin('4821$d'));
+  print(isValidPin('4821$d')); 
 
   int balance = 20000 + t * 500;
   print('Starting balance: ${formatRwf(balance)}');
@@ -102,19 +98,18 @@ void main() {
   balance = sendMoney(balance, sendAmount);
   balance = sendMoney(balance, sendAmount);
   balance = sendMoney(balance, sendAmount);
-
+  
   balance = buyAirtime(balance, 1000);
   balance = sendMoney(balance, 0);
   balance = sendMoney(balance, 200000);
 
   print('Final balance: ${formatRwf(balance)}');
-
-  // My own tests (expected output in the comment)
-  print(formatRwf(100)); // expected: 100 RWF
-  print(formatRwf(1000000)); // expected: 1,000,000 RWF
-  print(formatRwf(-123456)); // expected: -123,456 RWF (might break: negative sign + commas)
-  print(formatRwf(0)); // expected: 0 RWF
-  print(isValidPin('00000')); // expected: false (same digit five times)
-  print(isValidPin('')); // expected: false (empty string, might break)
-  print(isValidPin('4821 ')); // expected: false (a space is not a digit)
+  // Additional tests
+  print('\n--- Extra Tests ---');
+  print('Test 1 (fee for 1000 == 20): ${momoFee(1000) == 20}');
+  print('Test 2 (fee for 200000 == 1500): ${momoFee(200000) == 1500}');
+  print('Test 3 (format negative): ${formatRwf(-12500) == '-12,500 RWF'}');
+  print('Test 4 (valid PIN regNo): ${isValidPin(regNo) == true}');
+  print('Test 5 (airtime below min 100): ${buyAirtime(5000, 50) == 5000}');
+  print('Test 6 (send exact balance without fee): ${sendMoney(1000, 1000) == 1000}');
 }
