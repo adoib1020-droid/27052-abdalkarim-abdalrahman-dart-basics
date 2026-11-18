@@ -104,4 +104,12 @@ void main() {
   balance = sendMoney(balance, 200000);
 
   print('Final balance: ${formatRwf(balance)}');
+  // Additional tests
+  print('\n--- Extra Tests ---');
+  print('Test 1 (fee for 1000 == 20): ${momoFee(1000) == 20}');
+  print('Test 2 (fee for 200000 == 1500): ${momoFee(200000) == 1500}');
+  print('Test 3 (format negative): ${formatRwf(-12500) == '-12,500 RWF'}');
+  print('Test 4 (valid PIN regNo): ${isValidPin(regNo) == true}');
+  print('Test 5 (airtime below min 100): ${buyAirtime(5000, 50) == 5000}');
+  print('Test 6 (send exact balance without fee): ${sendMoney(1000, 1000) == 1000}');
 }
