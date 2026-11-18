@@ -4,8 +4,9 @@ const String regNo = '27052';
 final int d = int.parse(regNo[regNo.length - 1]);
 final int t = int.parse(regNo.substring(regNo.length - 2));
 
-// by A.A.
+
 int countVowels(String text) {
+  // by A.A.
   int count = 0;
   String lowerText = text.toLowerCase();
   
