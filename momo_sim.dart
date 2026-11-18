@@ -1,4 +1,4 @@
-// Student: Abdalrahman Abdalbasit Abdalrahman Abdalkarim
+// Student: Abdalrahman Abdalkarim
 // Reg no: 27052
 const String regNo = '27052';
 final int d = int.parse(regNo[regNo.length - 1]);
