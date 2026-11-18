@@ -1,5 +1,5 @@
 # Dart Basics Assignment
-* Full Name: Abdalrahman Abdalbasit Abdalrahman Abdalkarim
+* Full Name: Abdalrahman Abdalkarim
 * Reg Number: 27052
 * D: 2
 * T: 52
