@@ -22,7 +22,6 @@ int countVowels(String text) {
 
 void main() {
   print('Reg no: $regNo | D=$d | T=$t');
-  
-  // تجربة الدالة
+// by A.A.
   print(countVowels('Abdalrahman Abdalkarim')); 
 }
